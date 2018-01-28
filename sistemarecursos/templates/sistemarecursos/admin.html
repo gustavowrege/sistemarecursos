@@ -1,0 +1,20 @@
+{% extends 'sistemarecursos/base.html' %}
+
+
+
+	{% block content %}
+		{% if user.is_authenticated %}
+			<a href="{% url 'addEtapaRecurso' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+			{% for etapa in etapas %}
+				<div>
+					<h1><a href="{% url 'addCandidatos' etapa_id=etapa.id %}">Edital: {{ etapa.edital }}</a></h1>
+					<p>Prova: {{ etapa.tipoProva }}</p>
+					<p>Data abertura: {{ etapa.dataAbertura }}</p>
+					<p>Data fechamento: {{ etapa.dataFechamento }}</p>
+
+				</div>
+			{% endfor %}
+		{% else %}
+			<div class="alert alert-warning" role="alert">Somente usuários logados podem acessar essa página</div>
+		{% endif %}
+	{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'sistemarecursos/base.html' %}
+
+{% block content %}
+
+	{% if etapa.ativo %}
+
+		<h3>Edital {{ recurso.candidato.etapaRecurso}}</h3>
+		<p><strong>Candidato:</strong> {{recurso.candidato}}</p>
+		<p><strong>Área:</strong> {{recurso.candidato.cargo_area}}</p>
+		<div class="panel panel-default">
+			<div class="panel-heading"><strong>Questao:</strong> {{ recurso.questao }}</div>
+			<div class="panel-heading"> <strong>Solicitação:</strong> {{ recurso.solicitacao|safe }}</div>
+			<div class="panel-body">
+				{{ recurso.textoRecurso|safe }}
+		  </div>
+		</div>
+
+		<p>{{msg}}</p>
+
+		<form method="POST" class="confirma-edita">{% csrf_token %}
+			<button type="submit" name="confirmar" value="Confirmar" class="login btn btn-default">Confirmar</button>
+			<button type="submit" name="editar" value="Editar" class="login btn btn-default">Editar</button>
+		</form>
+	{% endif %}
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'sistemarecursos/base.html' %}
+
+{% block content %}
+
+	{% if etapa.ativo %}
+	
+		<div class="alert alert-success" role="alert">{{msg|linebreaksbr}}</div>
+		
+		<form method="POST" class="novo-recurso">{% csrf_token %}
+			<button type="submit" name="novo" value="Novo Recurso" class="login btn btn-default">Novo Recurso</button>
+			<button type="submit" name="sair" value="Sair" class="login btn btn-default">Sair</button>
+		</form>
+	{% endif %}
+
+{% endblock %}

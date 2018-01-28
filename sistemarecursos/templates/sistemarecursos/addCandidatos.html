@@ -1,0 +1,22 @@
+{% extends 'sistemarecursos/base.html' %}
+
+{% block content %}
+
+	{% if user.is_authenticated %}
+
+		<h1>Importar Candidatos para Etapa</h1>
+		<p>{{ etapa.edital }}
+		<p>{{ str }}
+
+		{% if form.errors %}
+			<div class="alert alert-warning" role="alert">{{ form.erros|pluralize }}</div>
+		{% endif %}
+		<form method="POST" class="add-candidatos" enctype="multipart/form-data">{% csrf_token %}
+			{{ form.as_p }}
+			<button type="submit" class="save btn btn-default">Salvar</button>
+		</form>
+
+
+
+		{% endif %}
+{% endblock %}

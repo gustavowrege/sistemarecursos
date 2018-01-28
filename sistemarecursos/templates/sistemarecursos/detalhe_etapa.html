@@ -1,0 +1,43 @@
+{% extends 'sistemarecursos/base.html' %}
+
+{% block content %}
+
+	<h3>Edital {{ etapa.edital }}</h3>
+	<p><strong>Abertura:</strong> {{ etapa.dataAbertura }}</p>
+	<p><strong>Fechamento:</strong> {{ etapa.dataFechamento }}</p>
+	<!--<p>Prova: {{ etapa.tipoProva }}</p>
+	<p>Agora: {{ agora }}</p>
+	<p>Ativo: {{ etapa.ativo }}</p> -->
+
+
+	{% if etapa.ativo %}
+	<div class="well">
+		{% if erro == "erro" %}
+			<div class="alert alert-warning" role="alert">{{msg}}</div>
+		{% endif %}
+
+		<form method="POST" class="form-horizontal">{% csrf_token %}
+			<div class="form-group">
+		    <label class="control-label col-sm-2" for="{{ form.inscricao.id_for_label }}">Inscricao:</label>
+				<div class="col-sm-3" style="width: 26%">
+					{{ form.inscricao }}
+				</div>
+			</div>
+			<div class="form-group">
+		    <label class="control-label col-sm-2" for="{{ form.rg.id_for_label }}">RG:</label>
+				<div class="col-sm-3" style="width: 26%">
+				{{ form.rg }}
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="login btn btn-default">Entrar</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	{% else %}
+		<div class="alert alert-danger" role="alert">Envio de Recurso não disponível</div>
+	{% endif %}
+
+{% endblock %}

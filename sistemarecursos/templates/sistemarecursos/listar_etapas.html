@@ -1,0 +1,15 @@
+{% extends 'sistemarecursos/base.html' %}
+
+{% block content %}
+	{% for etapa in etapas %}
+		<div>
+		
+			<h1><a href="{% url 'etaparecurso' etapa_id=etapa.id %}">Edital: {{ etapa.edital }}</a></h1>
+			<p>id: {{etapa.id}}</p>
+			<p>Prova: {{ etapa.tipoProva }}</p>
+			<p>Data abertura: {{ etapa.dataAbertura }}</p>
+			<p>Data fechamento: {{ etapa.dataFechamento }}</p>
+		
+		</div>
+	{% endfor %}
+{% endblock %}

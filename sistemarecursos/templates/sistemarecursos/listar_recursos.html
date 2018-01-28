@@ -1,0 +1,14 @@
+{% extends 'sistemarecursos/base.html' %}
+
+{% block content %}
+	{% for recurso in recursos %}
+		<div>
+		
+			<h1>Edital: {{ recurso.etapaRecurso }}</h1>
+			<p>id: {{recurso.id}}</p>
+			<p>Questao: {{recurso.questao}}</p>
+			<p>Texto: {{ recurso.textoRecurso|linebreaksbr }}</p>
+		
+		</div>
+	{% endfor %}
+{% endblock %}

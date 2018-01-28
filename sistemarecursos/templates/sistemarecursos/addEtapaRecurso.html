@@ -1,0 +1,24 @@
+{% extends 'sistemarecursos/base.html' %}
+
+{% block content %}
+
+	{% if user.is_authenticated %}
+		<script>
+			$(function () {
+					$('.datetime-input').datetimepicker({
+							format:'DD/MM/YYYY HH:mm'
+					});
+			});
+		</script>
+
+		<h1>Nova Etapa de Recurso</h1>
+		
+			<form method="POST" class="add-etapa-form">{% csrf_token %}
+				{{ form.as_p }}
+				<button type="submit" class="save btn btn-default">Salvar</button>
+			</form>
+
+
+
+		{% endif %}
+{% endblock %}

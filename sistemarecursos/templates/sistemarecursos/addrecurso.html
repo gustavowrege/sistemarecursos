@@ -1,0 +1,58 @@
+{% extends 'sistemarecursos/base.html' %}
+
+{% block content %}
+
+	{% if etapa.ativo %}
+
+		<h3>Edital {{ candidato.etapaRecurso}}</h3>
+		<p><strong>Candidato:</strong> {{candidato}}</p>
+		<p><strong>Área:</strong> {{candidato.cargo_area}}</p>
+		<p>{{solicitacao}}</p>
+
+			<form method="POST" class="add-recurso-form">{% csrf_token %}
+				<div class="row">
+					<div class="col-md-3">
+						<div class="input-group">
+						 <span class="input-group-addon"><strong>Questão</strong></span>
+						 	{{ form.questao }}
+						</div>
+				 </div>
+				 <div class="col-md-9">
+					 <div class="input-group">
+						<span class="input-group-addon"><strong>Solicito:</strong></span>
+						<div class="form-control" style="padding-top: 3px">
+
+							<label class="radio-inline" for="anular"><input type="radio" id="anular" name="solicitacao" value="anular"
+								{% if solicitacao == "anular" %} checked {% endif %}>Anular questão</label>
+							<label class="radio-inline" for="alterar" style="margin-left: 40px"><input type="radio" id="alterar" name="solicitacao" value="alterar"
+								{% if solicitacao == "alterar" %} checked {% endif %}>Alterar gabarito</label>
+
+							<label class="radio-inline" style="display: inline; padding-left: 0px; margin-left: 0px">
+								de
+							<input type="text" name="de" style="width: 7%" value="{{de}}">
+								para
+							<input type="text"  name="para" style="width: 7%" value="{{para}}"></label>
+
+						</div>
+					</div>
+				 </div>
+			 </div>
+
+			 <br>
+			{% if form.errors %}
+			<div class="alert alert-warning" role="alert">{{ form.textoRecurso.erros|pluralize }}</div>
+			{% endif %}
+			 <div class="form-group">
+			 	{{ form.textoRecurso }}
+			 </div>
+
+				<button type="submit" class="save btn btn-default">Salvar</button>
+			</form>
+
+
+	{% else %}
+		<div class="content">
+			<div class="alert alert-danger" role="alert">Envio de Recurso não disponível</div>
+		</div>
+		{% endif %}
+{% endblock %}
