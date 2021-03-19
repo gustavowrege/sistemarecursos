@@ -45,7 +45,7 @@ django-tables2-reports==0.0.10
 django-url-filter==0.3.0
 django-wkhtmltopdf==3.1.0
 django-wysiwyg==0.8.0
-djangorestframework==3.6.2
+djangorestframework==3.11.2
 djangorestframework-jwt==1.10.0
 docutils==0.13.1
 enum34==1.1.6
